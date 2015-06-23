@@ -1,0 +1,61 @@
+{
+    "appKeys": {
+        "accuracy": 7,
+        "bearing": 2,
+        "cmd": 1,
+        "distance": 3,
+        "heading": 8,
+        "location0": 10,
+        "location1": 11,
+        "location10": 20,
+        "location11": 21,
+        "location12": 22,
+        "location13": 23,
+        "location14": 24,
+        "location15": 25,
+        "location16": 26,
+        "location17": 27,
+        "location18": 28,
+        "location19": 29,
+        "location2": 12,
+        "location3": 13,
+        "location4": 14,
+        "location5": 15,
+        "location6": 16,
+        "location7": 17,
+        "location8": 18,
+        "location9": 19,
+        "message": 9,
+        "nextcall": 5,
+        "speed": 6,
+        "unit": 4
+    },
+    "capabilities": [
+        "location",
+        "configurable"
+    ],
+    "companyName": "peter@summers.aus.net",
+    "longName": "Get Back To",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/get back to 28.png",
+                "menuIcon": true,
+                "name": "Menu_Image",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "Get Back To",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "28f06dab-9a56-41f7-8166-a7e5712eed56",
+    "versionLabel": "3.1",
+    "watchapp": {
+        "watchface": false
+    }
+}
