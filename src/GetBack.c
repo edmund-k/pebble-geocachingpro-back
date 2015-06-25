@@ -27,7 +27,9 @@ int32_t distance = 0;
 int16_t bearing = 0;
 int16_t heading = -1;
 int16_t orientation = 0;
-bool orientToHeading = false;
+//bool orientToHeading = false;
+// Changed the standard setting
+bool orientToHeading = true;
 int16_t nextcall = 5;
 static const uint32_t CMD_KEY = 0x1;
 static const uint32_t BEARING_KEY = 0x2;
