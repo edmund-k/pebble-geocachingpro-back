@@ -82,7 +82,9 @@ static void tick_handler(void *data) {
   
 static void draw_row_callback(GContext *ctx, const Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
   APP_LOG(APP_LOG_LEVEL_DEBUG, "I'm drawing.");
-  menu_cell_title_draw(ctx, cell_layer, locations[cell_index->row]);
+  //menu_cell_title_draw(ctx, cell_layer, locations[cell_index->row]);
+  // Workaround to get cell selection drawn inverted. Bug in current SDK.
+  menu_cell_basic_draw(ctx, cell_layer, locations[cell_index->row], NULL, NULL);
 }
 
 static uint16_t num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, void *callback_context) {

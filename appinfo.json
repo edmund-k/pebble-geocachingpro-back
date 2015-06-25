@@ -34,8 +34,8 @@
         "location",
         "configurable"
     ],
-    "companyName": "peter@summers.aus.net",
-    "longName": "Get Back To",
+    "companyName": "pebble@edmundk.de",
+    "longName": "Geocaching Pro",
     "projectType": "native",
     "resources": {
         "media": [
@@ -48,12 +48,12 @@
         ]
     },
     "sdkVersion": "3",
-    "shortName": "Get Back To",
+    "shortName": "Geocaching Pro",
     "targetPlatforms": [
         "aplite",
         "basalt"
     ],
-    "uuid": "28f06dab-9a56-41f7-8166-a7e5712eed56",
+    "uuid": "28f06dab-9a56-41f7-8166-a7e5712eed57",
     "versionLabel": "3.1",
     "watchapp": {
         "watchface": false
