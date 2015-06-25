@@ -11,17 +11,18 @@ Main issue: You can add targets (e.g. coordinates of geocaches) only via the set
 Here is my current plan and backlog of changes and improvements:
 
 Done
-- Getting the source codes of the apps, setting the develop and build environment up and starting with a clean compile of the original apps.
+- Getting the source codes of the apps, setting the develop and build environment up and starting with a clean compile of the original apps. (M)
+- New app name, credits and reference to original creators of the app foundation. (M)
+- Fixing the inverted highlighting of the location selection menu (bug in current SDK). (M)
+- Start navigation in auto-mode, orientation of compass locked. (XS) 
 
 Ongoing
 - Offline-Setting-Page vorgelagert zu Online-Setting-Page um neue Ziele auch ohne Netzwerkverbindung übertragen zu können. Status: Hierzu habe ich erste Recherchen und Versuche betrieben. Mit Data URI sieht das vielversprechend aus. 
+- Change the color feedback while navigating from nautic scheme to a more intuitive scheme for non-nautics. Green = Getting closer, target ahead. Yellow = Getting closer but target off to the side. Red = Getting away from target, wrong direction.
 
 ToDo
 - Offline-Setting-Page mit Feld für die schnelle Übernahme eines neuen Ziels. Ziel wird zu oberst in die Liste eingetragen, direkt als Ziel übernommen und die Navigation gestartet.
-- Starten der Navigation im Auto-Mode, oben ist Bewegungsrichtung - Tweak und Optimierung der Standardparameter analog aktueller Einstellungen. 
-- Hervorhebung des Auswahlcursor im Menü (Zieleliste) fixen.
-- Change the color feedback while navigating from nautic scheme to a more intuitive scheme for non-nautics. Green = Getting closer, target ahead. Yellow = Getting closer but target off to the side. Red = Getting away from target, wrong direction.
-- Neuer Name, Credits, Referenz auf Urheber. 
+- Tweak und Optimierung der Standardparameter analog aktueller Einstellungen. 
 - Test mit Android. Test auf Pebble und Pebble Steel. 
 - Public release im Pebble App Store. Beschreibungstext. Funktionen. 
 - Später: UI überarbeiten. Geocaching App und neuen Kompass als Basis? Uhrzeit und Datum für Logs einblenden, evtl nur wenn Uhr gekickt wird.
