@@ -32,7 +32,7 @@ var locations = ["0"];   // Used to store favorite locations.
 var proximityAlert, proximityAlertDistance;  // Distance within which to fire the proximity alert and whether one has been fired.
 var plusorminussymbol = "\u00B1";
 var hintMessage = "";
-var locationsNeedSending;
+var locationsNeedSending = false;
 
 Pebble.addEventListener("ready", function(e) {
   refLat = parseFloat(localStorage.getItem("lat2")) || null;
@@ -44,7 +44,15 @@ Pebble.addEventListener("ready", function(e) {
   console.log("proximityAlertDistance = " + proximityAlertDistance);
   
   populateMenu();
-  
+  if (runtime > 0) {
+    var msg = {
+      "location0": locations[0], "location1": locations[1], "location2": locations[2], "location3": locations[3], "location4": locations[4],
+      "location5": locations[5], "location6": locations[6], "location7": locations[7], "location8": locations[8], "location9": locations[9],
+      "location10": locations[10], "location11": locations[11], "location12": locations[12], "location13": locations[13], "location14": locations[14],
+      "location15": locations[15], "location16": locations[16], "location17": locations[17], "location18": locations[18], "location19": locations[19] };
+    sendMessage(msg);
+  } else locationsNeedSending = true;
+
   // Get a reference point if we don't have one.
   settingReference = ((refLat === null) || (refLong === null));
   startGettingLocation();
@@ -147,6 +155,14 @@ Pebble.addEventListener("webviewclosed",
       localStorage.setItem("location"+locationNumber, locations[locationNumber]);
     }
     populateMenu();   
+    if (runtime > 0) {
+      var msg = {
+        "location0": locations[0], "location1": locations[1], "location2": locations[2], "location3": locations[3], "location4": locations[4],
+        "location5": locations[5], "location6": locations[6], "location7": locations[7], "location8": locations[8], "location9": locations[9],
+        "location10": locations[10], "location11": locations[11], "location12": locations[12], "location13": locations[13], "location14": locations[14],
+        "location15": locations[15], "location16": locations[16], "location17": locations[17], "location18": locations[18], "location19": locations[19] };
+      sendMessage(msg);
+    } else locationsNeedSending = true;
     startGettingLocation();
   }
 );
@@ -173,7 +189,6 @@ function populateMenu() {
         if (localStorage.key(index).valueOf() < oldestPinID) localStorage.removeItem(localStorage.key(index));
     }
   }
-  locationsNeedSending = true;
 }
 
 function sendMessage(dict) {
@@ -187,6 +202,7 @@ function appMessageAck(e) {
 
 function appMessageNack(e) {
   console.log("Message rejected by Pebble! " + e.error);
+  console.log("Message rejected by Pebble! " + e.error.message);
 }
 
 function startGettingLocation() {
@@ -289,6 +305,7 @@ function sendToWatch() {
       // Store the coordinates.
       localStorage.setItem(pinID.toString(), myLat.toFixed(5)+" "+myLong.toFixed(5));
       populateMenu();   
+      locationsNeedSending = true;
 
       // Attempt to create a pin.
       try {

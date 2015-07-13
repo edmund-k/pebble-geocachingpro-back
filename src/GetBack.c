@@ -103,9 +103,11 @@ static void select_click_callback(MenuLayer *menu_layer, MenuIndex *cell_index, 
     app_timer_reschedule(locationtimer, 1000 * (nextcall + 10));
     if (cell_index->row == 1) {
       strcpy(command, "set");
-    text_layer_set_text(distance_layer, "0");
-    } else
+      text_layer_set_text(distance_layer, "0");
+    } else {
       snprintf(command, sizeof(command), "set%d", (cell_index->row)-2);
+      text_layer_set_text(distance_layer, "?");
+    }
     DictionaryIterator *iter;
     app_message_outbox_begin(&iter);
     if (iter == NULL) {
@@ -228,8 +230,18 @@ static void hint_handler(ClickRecognizerRef recognizer, void *context) {
     text_layer_destroy(hint_layer);
     hint_layer = NULL;
   } else {
+    app_timer_cancel(locationtimer);
     tick_handler(NULL);
   }  
+}  
+
+static void go_back_handler(ClickRecognizerRef recognizer, void *context) {
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "Go back.");
+  if (hint_layer) {
+    text_layer_destroy(hint_layer);
+    hint_layer = NULL;
+  } else
+    window_stack_pop_all(animated);  // Exit the app.  
 }  
 
 void out_sent_handler(DictionaryIterator *sent, void *context) {
@@ -532,10 +544,11 @@ void in_dropped_handler(AppMessageResult reason, void *context) {
  
 static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_SELECT, hint_handler);
-  window_single_click_subscribe(BUTTON_ID_UP, toggleorienttoheading);
+//  window_single_click_subscribe(BUTTON_ID_UP, toggleorienttoheading);  Do nothing an just let it turn the light on.
   window_single_click_subscribe(BUTTON_ID_DOWN, get_info_handler);
+  window_single_click_subscribe(BUTTON_ID_BACK, go_back_handler);
   window_long_click_subscribe(BUTTON_ID_SELECT, 0, reset_handler, NULL);
-//  window_long_click_subscribe(BUTTON_ID_UP, 0, reset_handler, NULL);
+  window_long_click_subscribe(BUTTON_ID_UP, 0, toggleorienttoheading, NULL);
   window_long_click_subscribe(BUTTON_ID_DOWN, 0, pin_set_handler, NULL);
 }
 
